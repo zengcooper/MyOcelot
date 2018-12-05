@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <br />
+    <form action="http://localhost:51319/" method="post" target="targetFrame">
+        <input type="text" name="account" />
+        <input type="password" name="password" />
+        <input type="submit" value="提交表单" />
+    </form>
+    <iframe name="targetFrame" style="display:;"></iframe>
+</div>

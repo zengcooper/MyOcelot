@@ -1,0 +1,63 @@
+﻿<div class="jumbotron">
+    <h1>OAuth2.0认证服务器</h1>
+    <p class="lead">本程序是示例程序，主要通过Owin中间件实现了JWT认证服务。</p>
+    <p><a href="http://www.lichaoqiang.com" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>示例介绍</h2>
+        <p>
+           测试该示例，这里需要启动2个服务。当前认证服务，和JWT.Owin.Sample这两个服务，然后，我当前页面，发起了一个Ajax请求，首先获取令牌，
+           然后，在通过获取的access_token访问，资源服务JWT.Owin.Sample上受保护的资源。这里是密码验证模式和JWT的集合。
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+    </div>
+</div>
+<script type="text/javascript" src="http://tiku.kaola100.com/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+<script type="text/javascript">
+    $.ajax({
+        beforeSend: function (request) { console.log(request); },
+        type: "post",
+        data: { client_id: "_auth2.0Client", username: "admin", password: "admin", grant_type: "password", "scope": "scp1", redirect_uri: "http://www.lichaoqiang.com" },
+        url: "/oauth2/token",
+        success: function (data) {
+
+            var access_token = data.access_token;
+
+            testApi(access_token);
+
+        }
+
+    });
+
+    //测试API
+    function testApi(token) {
+        $.ajax({
+            beforeSend: function (request) {
+
+                //request.setRequestHeader("Authorization", "Bearer " + token);
+
+            },
+            type: "GET",
+            dataType: "json",
+            url: "http://localhost:51912/api/values/?access_token=" + token,
+            //headers: { "Authorization": "Bearer " + token },
+            success: function (data) {
+
+                alert("调用成功！");
+            }
+
+        });
+
+    }
+</script>

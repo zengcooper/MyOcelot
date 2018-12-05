@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <form onsubmit="return false">
+            <input type="image" name="location" onclick="getCoord(this);" id="location" src="~/Content/1.jpg" />
+        </form>
+    </div>
+    <script type="text/javascript">
+        function getCoord(image) {
+           
+            console.log(image.values);
+        }
+    </script>
+</body>
+</html>

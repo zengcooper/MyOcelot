@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>angular.js application</title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div>
+        <div ng-app="myapp" ng-controller="myctroller">
+
+            <ul>
+                <li ng-repeat="x in data">{{x.title}}</li>
+            </ul>
+            <ul>
+                <li ng-repeat="y in names">{{y.name}}</li>
+            </ul>
+            <p ng-init="text='lichaoqiang'">
+                <strong ng-bind="text"></strong>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module("myapp", []);
+        app.controller("myctroller", function ($scope, $location, $http) {
+            $scope.name = "lichaoqiang00";
+            $scope.data = [{ title: "a", url: "http://www.lichaoqiang.com" }];
+            $scope.url = $location.absUrl();
+            $http.get("Scripts/data.json?").then(function (response) {
+                $scope.names = response.data;
+                console.log(response);
+            });
+        });
+    </script>
+</body>
+</html>

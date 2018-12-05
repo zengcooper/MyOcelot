@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row" id="container">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p contenteditable="true" id="editor">
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+        <p>for enjoyable, agile development.</p>
+
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<a href="javascript:">下载</a>
+<canvas id="test" style="border:solid 1px #000"></canvas>
+<img src="" style="border:solid 1px #000" id="imageViewer" />
+@section scripts{
+    <script type="text/javascript">
+        var p = document.getElementById("editor");
+        var funGetSelectTxt = function () {
+            var txt = '';
+            if (document.selection) {
+                txt = document.selection.createRange().text;
+            } else {
+                txt = document.getSelection();
+            }
+            return "<strong>" + txt.toString() + "</strong>";
+        };
+
+        //jsonp
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/home/SignIn",
+            dataType: "jsonp",//数据类型为jsonp
+            jsonp: "callback",//服务端用于接收callback调用的function名的参数
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                alert('fail');
+            }
+        });
+    </script>
+    <script src="~/Scripts/domvas.js"></script>
+    <script>
+        var canvas = document.getElementById("test");
+        var context = canvas.getContext('2d');
+        var w, h;
+        w = $("#container").width(), h = $("#container").height() + 20;
+        $(canvas).attr("width", w).attr("height", h);
+        domvas.toImage(document.getElementById("container"), function () {
+            // Look ma, I just converted this element to an image and can now to funky stuff!
+            context.drawImage(this, 0, 0);
+            console.log(canvas.toDataURL());
+            document.getElementById("imageViewer").src = canvas.toDataURL();
+            $(canvas).hide();
+            downLoadImage(canvas, "0000.png")
+        });
+
+        function downLoadImage(canvas, name) {
+            var a = document.createElement("a");
+            a.href = canvas.toDataURL();
+            a.download = name;
+            a.click();
+        }
+    </script>
+}

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Websocket sample!</title>
+</head>
+<body>
+    <div id="container"></div>
+    <textarea name="text"></textarea>
+    <input type="button" value="提交" onclick="btnClickSend();" />
+    <script type="text/javascript">
+        window.onload = function () {
+            var target = document.getElementById("container");
+            var websocket = send("lichaoqiang");
+
+        };
+        var uri = "ws://127.0.0.1:9999/chat/";
+        function send(message) {
+            var target = document.getElementById("container");
+
+            var websocket = new WebSocket(uri);
+            websocket.onopen = function () { websocket.send(message); console.log("已连接"); document.title = "已连接"; }
+            websocket.onmessage = function (e) {
+                console.log(e);
+                var data = JSON.parse(e.data);
+                uri = "ws://127.0.0.1:9999/chat/?id=" + data.id;
+                target.innerHTML = data.data;
+            }
+            websocket.onclose = function (e) { console.log("关闭连接"); document.title = "关闭连接"; }
+            websocket.onerror = function (e) { console.log(e); alert("连接出错！"); }
+            return websocket;
+        }
+
+        function btnClickSend() {
+            var text = document.getElementsByName("text")[0].value;
+            send(text);
+        }
+    </script>
+</body>
+</html>

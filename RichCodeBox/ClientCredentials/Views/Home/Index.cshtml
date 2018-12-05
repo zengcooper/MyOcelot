@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "客户端认证模式";
+}
+
+<div class="jumbotron">
+    <h1>OAuth2.0客户端认证模式</h1>
+    <p class="lead">同样在该页面用Ajax发起了一个获取令牌的请求，认证服务器认证通过后，颁发令牌，获取到access_token等有关信息。点击下面测试链接。</p>
+    <p><a href="/home/about/" class="btn btn-primary btn-lg" id="testLink">点击测试链接 &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<script type="text/javascript" src="http://tiku.kaola100.com/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+<script type="text/javascript">
+    $.post("/token/", {
+        client_id: "4645631465",
+        client_secret: "fsdf",
+        grant_type: "client_credentials",
+        scope: "scope1"
+    }, function (data) {
+
+        if (data) {
+            $("#testLink").attr("href","/home/about?access_token=" + data.access_token);
+            alert("访问令牌：" + data.access_token);
+        }
+
+        console.log(data);
+    });
+</script>

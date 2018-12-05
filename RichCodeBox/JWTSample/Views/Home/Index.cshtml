@@ -1,0 +1,27 @@
+﻿<div class="jumbotron">
+    <h1>JWT示例程序</h1>
+    <p class="lead">JWT是由三段信息构成的，将这三段信息文本用.链接一起就构成了Jwt字符串。</p>
+    <p><a href="http://www.lichaoqiang.com" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>什么是JWT?</h2>
+        <p>
+            Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密。
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>基于session认证所显露的问题</h2>
+        <p>
+            Session: 每个用户经过我们的应用认证之后，我们的应用都要在服务端做一次记录，以方便用户下次请求的鉴别，通常而言session都是保存在内存中，而随着认证用户的增多，服务端的开销会明显增大。
+            扩展性: 用户认证之后，服务端做认证记录，如果认证的记录被保存在内存中的话，这意味着用户下次请求还必须要请求在这台服务器上,这样才能拿到授权的资源，这样在分布式的应用上，相应的限制了负载均衡器的能力。这也意味着限制了应用的扩展能力。
+            CSRF: 因为是基于cookie来进行用户识别的, cookie如果被截获，用户就会很容易受到跨站请求伪造的攻击。
+        </p>
+        <p><a class="btn btn-default" href="http://www.lichaoqiang.com">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>基于token的鉴权机制</h2>
+        <p>基于token的鉴权机制类似于http协议也是无状态的，它不需要在服务端去保留用户的认证信息或者会话信息。这就意味着基于token认证机制的应用不需要去考虑用户在哪一台服务器登录了，这就为应用的扩展提供了便利。</p>
+        <p><a class="btn btn-default" href="http://www.lichaoqiang.com/">Learn more &raquo;</a></p>
+    </div>
+</div>

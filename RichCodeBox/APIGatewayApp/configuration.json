@@ -1,0 +1,44 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "DownstreamScheme": "http",
+      "DownstreamHost": "localhost",
+      "DownstreamPort": 8801,
+      "UpstreamPathTemplate": "/api/values",
+      "UpstreamHttpMethod": [ "Get" ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10,
+        "TimeoutValue": 5000
+      },
+      "HttpHandlerOptions": {
+        "AllowAutoRedirect": false,
+        "UseCookieContainer": false
+      },
+      "AuthenticationOptions": {
+
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "http",
+      "DownstreamPort": 8802,
+      "DownstreamHost": "localhost",
+      "UpstreamPathTemplate": "/api/product",
+      "UpstreamHttpMethod": [ "Get" ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 10,
+        "TimeoutValue": 5000
+      },
+      "AuthenticationOptions": {
+
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/admin"
+  }
+}

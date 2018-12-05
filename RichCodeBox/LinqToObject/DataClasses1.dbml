@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TiKuX2.0" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=TiKuX2.0;Integrated Security=True" SettingsObjectName="LinqToObject.Properties.Settings" SettingsPropertyName="TiKuX2_0ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="" Member="tb_CourseInfo">
+    <Type Name="tb_CourseInfo">
+      <Column Member="ID" Type="System.Int32" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Member="Names" Type="System.String" CanBeNull="false" />
+      <Column Member="Orders" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_Chapter" Member="tb_Chapter">
+    <Type Name="tb_Chapter">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CptName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CourseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentPath" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoteNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Collection" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Orders" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NodeType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DirCode" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="IsOpen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsExam" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifyOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Del" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginalId" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="SuperChapter" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="fromid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="fromtype" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="IsTrial" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

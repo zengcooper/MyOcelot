@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "用户登陆";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model JWT.Owin.Sample.Models.LoginViewModel
+<div class="page-header">
+
+</div>
+<div class="row">
+    @using (Html.BeginForm("token", "oauth2", FormMethod.Post))
+    {
+        @Html.HiddenFor(e => e.client_id)
+        @Html.HiddenFor(e => e.grant_type)
+        @Html.HiddenFor(e => e.scope)
+        <div class="form-group">
+            <label for="account">登陆账号</label>
+            @Html.TextBoxFor((e) => e.username, new { @class = "form-control", placeholder = "请输入登陆账号" })
+        </div>
+        <div class="form-group">
+            <label for="password">登陆密码</label>
+            @Html.PasswordFor((e) => e.password, new { @class = "form-control", placeholder = "请输入登陆密码" })
+        </div>
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor((e) => e.isRemember)
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    }
+</div>

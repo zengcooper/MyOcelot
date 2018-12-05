@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+@model OAuthCode.Models.LoginViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登录授权</title>
+</head>
+<body>
+    <div>
+        <form action="/Account/Login?returnUrl=@ViewBag.returnUrl" method="POST">
+            <p>@Html.TextBoxFor((m) => m.account)</p>
+            <p>@Html.PasswordFor((m) => m.password)</p>
+            <p><input type="submit" value="提交" /></p>
+        </form>
+    </div>
+</body>
+</html>

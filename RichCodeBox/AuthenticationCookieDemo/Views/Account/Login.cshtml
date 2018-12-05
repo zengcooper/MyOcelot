@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+@model AuthenticationCookieDemo.Models.LoginViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>会员登录</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { }))
+        {
+            <div>
+                @Html.TextBoxFor((m) => m.account)
+            </div>
+            <div>
+                @Html.PasswordFor((m) => m.password)
+            </div>
+            <div>
+                <input type="submit" value="登录" />
+            </div>
+        }
+    </div>
+</body>
+</html>

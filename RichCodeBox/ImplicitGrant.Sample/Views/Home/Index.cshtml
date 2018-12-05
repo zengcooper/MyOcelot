@@ -1,0 +1,41 @@
+﻿<div class="jumbotron">
+    <h1>Auth2.0简化模式</h1>
+    <p class="lead">在授权码模式中，Authorization Code和Access Token都由授权服务器生成和验证，而最终只用到Access Token，这让Authorization Code显得无足轻重。因此，授权码简化模式，去掉了Authorization Code的申请流程，从而通过User-Agent（Browser）直接申请Access Token。</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
+            a broad range of clients, including browsers and mobile devices. ASP.NET Web API
+            is an ideal platform for building RESTful applications on the .NET Framework.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+    </div>
+</div>
+<script type="text/javascript" src="http://tiku.kaola100.com/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+<script type="text/javascript">
+
+    var token = "@ViewBag.access_token";
+    $.ajax({
+        url: "/api/values/",
+        type: "get",
+        headers: { "Authorization": "Bearer " + token },
+        success: function (data) {
+
+            console &&console.log(data);
+            alert("调用成功！");
+        }
+    });
+</script>
